@@ -7,6 +7,12 @@ class NewsDetailsScreen extends StatelessWidget {
   final TopHeadLinesModel article;
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        color: Colors.black,
+      ),
+    );
   }
 }

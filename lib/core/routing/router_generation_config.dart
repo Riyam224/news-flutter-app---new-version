@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_app_api/core/routing/app_routes.dart';
 import 'package:news_app_api/features/home_screen_service/home_screen.dart';
 import 'package:news_app_api/features/home_screen_service/models/top_headlines_model.dart';
 import 'package:news_app_api/features/home_screen_service/news_details_screen.dart';
-import 'package:news_app_api/features/home_screen_service/widgets/top_headline_item_widget.dart';
 import 'package:news_app_api/features/search_screen_service/search_screen.dart';
 
 class RouterGenerationConfig {
