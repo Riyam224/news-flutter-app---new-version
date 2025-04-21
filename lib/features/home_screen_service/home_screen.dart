@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news_app_api/core/constants/constants.dart';
 import 'package:news_app_api/core/routing/app_routes.dart';
 import 'package:news_app_api/core/styles/app_text_styles.dart';
 import 'package:news_app_api/core/widgets/spacing_widgets.dart';
@@ -32,7 +33,22 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: const Color(0xffE9EEFA),
         toolbarHeight: 120.h,
         title: Text("explore".tr(), style: AppTextStyles.titlesStyles),
-        actions: [SearchTextField()],
+        actions: [
+          SearchTextField(),
+          IconButton(
+            onPressed: () {
+              if (context.locale.languageCode == 'en') {
+                context.setLocale(const Locale('ar'));
+              } else {
+                context.setLocale(const Locale('en'));
+              }
+              AppConstants.lang =
+                  context.locale.languageCode == 'en' ? 'ar' : 'en';
+            },
+            icon: const Icon(Icons.language),
+          ),
+        ],
+        centerTitle: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -143,12 +159,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (context, index) {
                           Article article = topHeadLinesModel.articles![index];
                           return ArticleCardWidget(
-                            title: article.title ?? "",
-                            authorName: article.author ?? "",
-                            date: DateFormat(
-                              'yyyy-MM-dd – kk:mm',
-                            ).format(article.publishedAt!),
-                            imageUrl: article.urlToImage,
+                            article: article,
+                            // title: article.title ?? "",
+                            // authorName: article.author ?? "",
+                            // date: DateFormat(
+                            //   'yyyy-MM-dd – kk:mm',
+                            // ).format(article.publishedAt!),
+                            // imageUrl: article.urlToImage,
                           );
                         },
                       ),

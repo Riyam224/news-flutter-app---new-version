@@ -10,7 +10,11 @@ class HomeScreenServices {
     try {
       final response = await DioHelper.getRequest(
         endPoint: ApiEndpoints.topHeadlinesEndpoint,
-        query: {"apiKey": AppConstants.newsApiKey, "country": "us"},
+        query: {
+          "apiKey": AppConstants.newsApiKey,
+          "country": "us",
+          "language": AppConstants.lang,
+        },
       );
 
       if (response.statusCode == 200) {
